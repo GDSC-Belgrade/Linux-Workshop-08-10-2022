@@ -162,7 +162,7 @@ IFS=$OLD_IFS
  - emacs -nw zad1.sh)
 > Želimo da od spolja kad neko bude pozvao skriptu, da nam zapravo prosledi 3 parametra. Vraćamo se u konzolu
  - zad1.sh Bogdan Radosavljevic 2020/0109
-> Vraćamo se u skriptu. Dodajemo na početku echo Program: $0 - možemo da ispišemo i ime programa. Međutim ispisuje se kompletna putanja do skripte, da bi ispisali samo ime pisem `basename $0`. Možemo vršiti proveru da li su parametri prosleđeni valjani. Dodamo na početku if [ -n "$1" -a -n "$2" ] then - ovo -n pita da li se nešto nalazi unutar $1 tj $2 i ukoliko se nalazi vraća logičku istinu. Objedinićemo ime i prezime
+> Vraćamo se u skriptu. Dodajemo na početku echo Program: $0 - možemo da ispišemo i ime programa. Međutim ispisuje se kompletna putanja do skripte, da bi ispisali samo ime pisem `basename $0`. Možemo vršiti proveru da li su parametri prosleđeni valjani. Dodamo na početku `if [ -n "$1" -a -n "$2" ] then - ovo -n pita da li se nešto nalazi unutar $1 tj $2` i ukoliko se nalazi vraća logičku istinu. Objedinićemo ime i prezime
 ```bash
 echo Program: `basename $0` 
 echo Ime i prezime: $1
@@ -171,7 +171,7 @@ else
 	echo Nisu svi parametri uneti
 ```
  - zad1.sh Bogdan Radosavljevic 2020/0109
-> Međutim ovo neće raditi valjano jer se parametri razdvajaju belinama. Da bi Bogdan Radosavljević bio jedan parametar stavićemo ga pod ''. Pokazati i slučaj kad nisu svi parametri uneti zad1.sh Bogdan Radosavljevic. Da ne bi ispitivali za svaki od par dal je prazan možemo reći if [ $# -eq 2 ] - $# je promenljiva koja čuva broj par prosleđen iz kom linije . Pored $# postoje još dve spec promenljive $* i $@ koje čuvaju sve parametre koje smo prosledili kao jedan string
+> Međutim ovo neće raditi valjano jer se parametri razdvajaju belinama. Da bi Bogdan Radosavljević bio jedan parametar stavićemo ga pod ''. Pokazati i slučaj kad nisu svi parametri uneti zad1.sh Bogdan Radosavljevic. Da ne bi ispitivali za svaki od par dal je prazan možemo reći `if [ $# -eq 2 ] - $#` je promenljiva koja čuva broj par prosleđen iz kom linije . Pored `$#` postoje još dve spec promenljive $* i $@ koje čuvaju sve parametre koje smo prosledili kao jedan string
 ```bash
 echo Testiranje \$* i \$@ # escape-ujemo znake $ jer želimo ispis toga
 echo $* # ovo sve tumači kao jedan definisani string
